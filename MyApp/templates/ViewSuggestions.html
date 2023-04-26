@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'ViewSuggestionsStyle.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <title>View Suggestions</title>
+</head>
+
+<body>
+    <nav>
+        <div class="navbar">
+            <div class="logo"><a href="{% url 'ViewProfile' %}">ScaleUP<i class="far fa-arrow-alt-circle-up"></i></a></div>
+            <ul class="menu">
+                <li class="first current_page_item">
+                    <a href="{% url 'ViewProfile' %}">Profile</a>
+                  </li>
+                  <li><a href="{% url 'ViewStartupGroup' %}">View Mentors</a></li>
+                  <li><a href="{% url 'PostQueries' %}">Post Queries</a></li>
+                  <li><a href="{% url 'ViewSuggestions' %}">View Suggestions</a></li>
+                <!--<li><a href="{% url 'ViewRatings' %}">View Ratings</a></li>-->
+                <li>
+                    <a onclick="myFunction()" href="{% url 'Logout' %}">Logout</a>
+                </li>
+
+
+                <div class="cancel-btn">
+                    <i class="fas fa-times"></i>
+                </div>
+            </ul>
+            <div class="media-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </nav>
+    <form name="f1" method="post" action={% url 'SuggestionView' %} onsubmit="return validate(this);"><br />
+        <br />{% csrf_token %}<br />
+        <h4><b>View Suggestions Screen</b></h4>
+
+
+
+        <table align="center" width="40">
+            {{data|safe}}
+
+
+            </select>
+            </td>
+            </tr>
+
+
+
+            <tr>
+                <td></td>
+                <td><input type="submit" value="View Suggestions">
+                </td>
+            </tr>
+
+        </table>
+        </div>
+
+        </div>
+        <br /><br /><br />
+
+
+
+</body>
+
+</html>

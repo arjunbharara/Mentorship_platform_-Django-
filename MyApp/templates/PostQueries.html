@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'PostQueriesStyle.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <title>Post Queries</title>
+</head>
+
+<body>
+    <nav>
+        <div class="navbar">
+            <div class="logo"><a href="{% url 'ViewProfile' %}">ScaleUP<i class="far fa-arrow-alt-circle-up"></i></a></div>
+            <ul class="menu">
+                <li class="first current_page_item"><a href="{% url 'ViewProfile' %}">Profile</a></li>
+                <li class="first current_page_item"><a href="{% url 'ViewStartupGroup' %}">View Mentors</a></li>
+                <li><a href="{% url 'PostQueries' %}">Post Queries</a></li>
+                <li><a href="{% url 'ViewSuggestions' %}">View Suggestions</a></li>
+               <!-- <li><a href="{% url 'ViewRatings' %}">View Mentor Ratings</a></li>-->
+                <li><a href="{% url 'Logout' %}">Logout</a></li>
+
+                <div class="cancel-btn">
+                    <i class="fas fa-times"></i>
+                </div>
+            </ul>
+            <div class="media-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </nav>
+    <h2 class="message">Post Your Queries</h2>
+<!-- 
+    
+    <table align="right" width="40">
+        <tr>
+            <td>
+                <font size="" color="black">Your&nbsp;Query</b>
+            </td>
+            <td><input type="text" name="t1" style="font-family: Comic Sans MS" size=60 /></td>
+        </tr>
+        {{ data|safe }}
+        </select>
+        </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit">
+            </td>
+        </tr>
+    </table>
+    </div>
+
+    </div> -->
+    <!-- <div>
+        <form>
+            <textarea rows="5" cols="50" name="t1">Enter your query here</textarea>
+            <input type="textarea" name="t1" style="font-family: Comic Sans MS" size=60/>
+            <input type="submit" value="submit" />
+        </form>
+    </div> -->
+
+    <div>
+        <div class="card">
+        <div>
+        <label for="mentors">Select a Mentor : </label>
+        <form name="f1" method="post">
+            <select name="t1" id="mentors">
+                {{ data|safe }}
+            </select>
+            </div>
+            <table id="query">
+                
+                    {% csrf_token %}
+                    <tr>
+                        <td>
+                            <font size="" color="black">Your Query : </b>
+                        </td>
+                        <!-- <td><input type="text" name="t1" id="text_box" /></td> //to be commented -->
+                        <td><textarea rows="10" cols="30" name="t2"  placeholder="Post your Query here..."></textarea></td>
+                        </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Submit" formaction="{% url 'PostQueriesAction' %}" id="submit_btn">
+                        </td>
+                    </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Request a Meeting" formaction="{% url 'RequestMeeting' %}" id="request_btn">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'MentorRegisterStyle.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <script>
+      var msg = "{{data|safe}}";
+      if (msg != "") {
+        alert(msg);
+      }
+    </script>
+    <title>mentor Register</title>
+  </head>
+
+  <body>
+    <nav>
+      <div class="navbar">
+        <div class="logo">
+          <a href="index.html"
+            >ScaleUP<i class="far fa-arrow-alt-circle-up"></i
+          ></a>
+        </div>
+        <div class="media-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </nav>
+    <div class="wrapper">
+      <div class="title-text">
+        <div class="title login">
+          ScaleUP<i class="far fa-arrow-alt-circle-up"></i>
+        </div>
+        <div class="title signup">Signup Form</div>
+      </div>
+      <div class="form-container">
+        <div class="form-inner">
+          <form name="f1" method="post" action={% url 'MentorRegisterAction' %}
+          onsubmit="return validate(this);"> {% csrf_token %}
+
+          <font size="" color="red">
+            <center>{{ data|safe }}</center>
+          </font>
+          <div class="field">
+            <input type="text" placeholder="first name" name="t1" required />
+          </div>
+          <div class="field">
+            <input type="text" placeholder="last name" name="t2" required />
+          </div>
+          <div class="field">
+            <input
+              type="number"
+              placeholder="experience "
+              name="t3"
+              required
+            />
+          </div>
+          <label for="domain"></label>
+          <select name="t4" required>
+            <option value="" disabled selected>Select Company Domain</option>
+            <option value="Finance and Accounting" class="s">
+              Finance and Accounting
+            </option>
+            <option value="Human Resources" class="s">Human Resource</option>
+            <option value="Legal and Compliance" class="s">
+              Legal and Compliance
+            </option>
+            <option value="Sales and Marketing" class="s">
+              Sales and Marketing
+            </option>
+            <option value="Logistics" class="s">Logistics</option>
+            <option value="Engineering" class="s">Engineering</option>
+            <option value="Design" class="s">Design</option>
+            <option value="Operations" class="s">Operations</option>
+            <option value="Management" class="s">Management</option>
+            <option value="Manufacturing and Production" class="s">
+              Manufacturing and Production
+            </option>
+            <option value="Training" class="s">Training</option>
+            <option value="Information Technology" class="s">
+              Information Technology
+            </option>
+          </select>
+        <div class="field">
+          <input type="text" placeholder="Current Company" name="t5" required />
+        </div>
+        <div class="field">
+            <input
+              type="email"
+              placeholder="Email"
+              name="t6"
+              required
+            />
+          </div>
+          <div class="field">
+            <input
+              type="text"
+              placeholder="LinkedIn Profile"
+              name="t7"
+              required
+            />
+          </div>
+          <div class="field">
+            <input
+              type="number"
+              placeholder="Rating"
+              name="t8"
+              required
+            />
+          </div>
+          <div class="field">
+            <input type="password" placeholder="Password" name="t9" required />
+          </div>
+
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit" value="Sign Up" onclick="myFunction()" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

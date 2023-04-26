@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'ViewStartupGroupStyle.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <title>View Mentors</title>
+</head>
+
+<body>
+    <nav>
+        <div class="navbar">
+            <div class="logo"><a href="{% url 'ViewProfile' %}">ScaleUP<i class="far fa-arrow-alt-circle-up"></i></a></div>
+            <ul class="menu">
+                <li class="first current_page_item"><a href="{% url 'ViewProfile' %}">Profile</a></li>
+                <li class="first current_page_item"><a href="{% url 'ViewStartupGroup' %}">View Mentors</a></li>
+                <li><a href="{% url 'PostQueries' %}">Post Queries</a></li>
+                <li><a href="{% url 'ViewSuggestions' %}">View Suggestions</a></li>
+                 <li><a href="{% url 'ViewRatings' %}">View Mentor Ratings</a></li> 
+                <li><a href="{% url 'Logout' %}">Logout</a></li>
+                <div class="cancel-btn">
+                    <i class="fas fa-times"></i>
+                </div>
+            </ul>
+            <div class="media-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </nav>
+     <h4><b>&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</b></h4>
+        
+         <br> 
+         <h2 class="message">Mentors</h2>
+    <form action="{% url 'Filter'%}">
+        {% csrf_token %}
+        <label for="domain">Filter by Domain</label>
+        <select name="domain" id="domain">
+            <option value="" disabled selected>Select Domain</option>
+            <option value="Finance and Accounting">
+                Finance and Accounting
+              </option>
+              <option value="Human Resources">Human Resource</option>
+              <option value="Legal and Compliance">
+                Legal and Compliance
+              </option>
+              <option value="Sales and Marketing">
+                Sales and Marketing
+              </option>
+              <option value="Logistics">Logistics</option>
+              <option value="Engineering">Engineering</option>
+              <option value="Design">Design</option>
+              <option value="Operations">Operations</option>
+              <option value="Management">Management</option>
+              <option value="Manufacturing and Production" class="s">
+                Manufacturing and Production
+              </option>
+              <option value="Training">Training</option>
+              <option value="Information Technology">
+                Information Technology
+              </option>
+<!--             
+            <option value="Finance">Finance</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Human Resource">Human Resource</option>
+            <option value="Engineering">Engineering</option> -->
+
+        </select>
+        <button type="submit" style="height: 20px; width: 40px;">Filter</button>
+        <!--<a href = "{% url 'Filter'%}"><button style="height: 20px; width: 40px;" value = "filter">Filter</button></a>-->
+    </form>
+         <table style= "margin-top: 20px" border="1" align="center" width="100%" >
+                  
+              <tr>
+              <th><font size="" >Mentor Name</th>
+              <th><font size="" >Experience</th>
+              <th><font size="" >Current Company</th>
+              <th><font size="" >LinkedIn Profile</th>
+              <th><font size="" >Rating</th>  
+              <th><font size="" >Subscribe</th> 
+             </tr>
+     
+             {{data|safe}}
+              
+              
+     </p>
+     </table>
+     <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+
+</body>
+
+</html>

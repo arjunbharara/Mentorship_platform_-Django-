@@ -1,0 +1,112 @@
+{% comment %} 
+con = pymysql.connect(host='127.0.0.1',port = 3306,user = 'root', password = 'root', database = 'mentor',charset='utf8')
+        with con:
+            cur = con.cursor()
+            cur.execute("select * from queries where domain='"+group+"'")
+            rows = cur.fetchall()
+            for row in rows:
+                            qid = row[0]
+                            startup = row[1]
+                            domain = row[2]
+                            query = row[3]
+                            date = row[4]
+
+
+Suggestions.html {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/SuggestionsStyle.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <title>Suggestions</title>
+    <script>
+        function myFunction() {
+            confirm("Are you sure you want to Logout?");
+        }
+    </script>
+</head>
+
+<body>
+    <nav>
+        <div class="navbar">
+            <div class="logo"><a href="StartupScreen.html">ScaleUP<i class="far fa-arrow-alt-circle-up"></i></a></div>
+            <ul class="menu">
+                <li class="first current_page_item"><a href="MentorScreen.html">Profile</a></li>
+                <li><a href="ViewQueries.html">View Queries</a></li>
+                <!-- <li><a href="{% url 'ViewMentorRatings' %}">View Own Ratings</a></li> -->
+                <li><a href="Index.html" onclick="myFunction()">Logout</a></li>
+
+                <div class="cancel-btn">
+                    <i class="fas fa-times"></i>
+                </div>
+            </ul>
+            <div class="media-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <h2 class="message">Give your Suggestion</h2>
+
+
+
+
+    <div>
+        <div class="card">
+
+        <table id="query">
+            <tr>
+                <td>
+                    <font size="" color="black">Your Suggestion : </b>
+                </td>
+                <!-- <td><input type="text" name="t1" id="text_box" /></td> -->
+                <td><textarea rows="10" cols="30" name="comment" form="usrform" placeholder="Post your Suggestion here..."></textarea></td>
+
+
+
+
+
+                </select>
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Submit" id="submit_btn">
+                </td>
+            </tr>
+
+
+
+        </table>
+    </div>
+    </div>
+
+    </div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <!-- <div>
+        <form>
+            <textarea rows="5" cols="50" name="t1">Enter your query here</textarea>
+            <input type="textarea" name="t1" style="font-family: Comic Sans MS" size=60/>
+            <input type="submit" value="submit" />
+        </form>
+    </div> -->
+
+
+
+</body>
+
+</html>
+
+

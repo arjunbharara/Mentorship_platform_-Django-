@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'ViewQueriesStyle.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+
+    <title>View Queries</title>
+  </head>
+
+  <body>
+    <nav>
+      <div class="navbar">
+        <div class="logo">
+          <a href="#">ScaleUP<i class="far fa-arrow-alt-circle-up"></i></a>
+        </div>
+        <ul class="menu">
+          <li><a href="{% url 'ViewProfile' %}">Pofile</a></li>
+          <li><a href="{% url 'ViewQueries' %}">View Queries</a></li>
+          <li><a href="{% url 'Logout' %}">Logout</a></li>
+
+          <div class="cancel-btn">
+            <i class="fas fa-times"></i>
+          </div>
+        </ul>
+        <div class="media-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </nav>
+    <h2 class="message">Queries</h2>
+    <table border="1" align="center" width="100%">
+      <tr>
+        <th style="width: 7%">Query ID</th>
+        <th style="width: 16%">Startup Name</th>
+        <th style="width: 25%">Query</th>
+        <th style="width: 15%">Date</th>
+        <th style="width: 20%">Email</th>
+        <th style="width: 25%">Submit Suggestion</th>
+        <!-- <th style="width: 7%">Submit</th> -->
+      </tr>
+      {% csrf_token %} {{ data|safe }}
+    </table>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+  </body>
+</html>

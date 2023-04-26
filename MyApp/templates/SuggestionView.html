@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'SuggestionViewStyle.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <title>Suggestion View</title>
+</head>
+
+<body>
+    <nav>
+        <div class="navbar">
+            <div class="logo"><a href="{% url 'ViewProfile' %}">ScaleUP<i class="far fa-arrow-alt-circle-up"></i></a></div>
+            <ul class="menu">
+                <li class="first current_page_item"><a href="{% url 'ViewProfile' %}">Profile</a></li>
+                <li class="first current_page_item"><a href="{% url 'ViewStartupGroup' %}">View Groups</a></li>
+                <li><a href="{% url 'PostQueries' %}">Post Queries</a></li>
+                <li><a href="{% url 'ViewSuggestions' %}">View Suggestions</a></li>
+               <!-- <li><a href="{% url 'ViewRatings' %}">View Mentor Ratings</a></li>-->
+                <li><a href="{% url 'Logout' %}">Logout</a></li>
+
+                <div class="cancel-btn">
+                    <i class="fas fa-times"></i>
+                </div>
+            </ul>
+            <div class="media-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </nav>
+    
+    <h2 class="message">Suggestions</h2>
+    
+    <form name="f1" method="post" action={% url 'SuggestionView' %}>
+        <label for="select_mentor">Select Mentor : </label>
+        {% csrf_token %}
+        <select name="t1" id="select_mentor">
+            <option value="" disabled selected>Select Mentor</option>
+                {{ data|safe }}
+        </select>
+        <input type="submit" value="Filter" />
+    </form>
+    <br>
+    <table border="1" align="center" width="100%">
+      <tr>
+        <th style="width: 5%">Query ID</th>
+        <th style="width: 11%">Mentor Name</th>
+        <th style="width: 11%">Domain</th>
+        <th style="width: 30%">Query</th>
+        <th style="width: 30%">Suggestions</th>
+        <th style="width: 5%">Give Rating</th>
+      </tr>
+      
+      {{table|safe}}
+    </table>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+</body>
+
+</html>

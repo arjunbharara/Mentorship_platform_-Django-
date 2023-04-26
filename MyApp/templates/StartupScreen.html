@@ -1,0 +1,186 @@
+{% load static %}
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'StartupScreenStyle.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Start-up Screen</title>
+    <script>
+      function myFunction() {
+        confirm("Are you sure you want to Logout?");
+      }
+    </script>
+  </head>
+
+  <body>
+    <nav>
+      <div class="navbar">
+        <div class="logo">
+          <a href="#">ScaleUP<i class="far fa-arrow-alt-circle-up"></i></a>
+        </div>
+        <ul class="menu">
+          <li class="first current_page_item">
+            <a href="{% url 'ViewStartupGroup' %}">View Mentors(Groups)</a>
+          </li>
+          <li><a href="{% url 'PostQueries' %}">Post Queries</a></li>
+          <li><a href="{% url 'ViewSuggestions' %}">View Suggestions</a></li>
+          <li><a href="{% url 'Logout' %}">Logout</a></li>
+
+          <div class="cancel-btn">
+            <i class="fas fa-times"></i>
+          </div>
+        </ul>
+        <div class="media-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="message">
+      <h2>Welcome,<span id="name"> Belvedere Trading </span></h2>
+    </div>
+    <div class="profile">
+      <p><b>Company Age :</b> 2 Years</p>
+      <p><b>Number of Employees :</b> 25</p>
+      <p><b>Company Domain :</b> Finanace</p>
+      <p>
+        <b>Descrition :</b> Belvedere Trading is providing timely insights to
+        traders with its advanced proprietary technology.
+      </p>
+    </div>
+    <div style="padding: 300px; color: black">{{data}}</div>
+    <div style="padding: 20px; color: black">
+      {{user.company_name}}<br />{{user}} <br />{{user.age}}
+      <br />{{user.domain}} <br />{{user.emps}} <br />{{user.descp}}
+      <br />{{user.poc}} <br />{{user.poc_email}} <br />{{user.email}}
+      <br />{{user.linkedin}} <br />{{user.website}}
+    </div>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'StartupScreenStyle.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Start-up Screen</title>
+    <script>
+      function myFunction() {
+        confirm("Are you sure you want to Logout?");
+      }
+      var msg = "{{data|safe}}";
+      if (msg != "") {
+        alert(msg);
+      }
+    </script>
+  </head>
+
+  <body>
+    <nav>
+      <div class="navbar">
+        <div class="logo">
+          <a href="{% url 'ViewProfile' %}"
+            >ScaleUP<i class="far fa-arrow-alt-circle-up"></i
+          ></a>
+        </div>
+        <ul class="menu">
+          <li class="first current_page_item">
+            <a href="{% url 'ViewProfile' %}">Profile</a>
+          </li>
+          <li><a href="{% url 'ViewStartupGroup' %}">View Mentors</a></li>
+          <li><a href="{% url 'PostQueries' %}">Post Queries</a></li>
+          <li><a href="{% url 'ViewSuggestions' %}">View Suggestions</a></li>
+          <!-- <li><a href="{% url 'ViewRatings' %}">View Mentor Ratings</a></li> -->
+          <li>
+            <a onclick="myFunction()" href="{% url 'Logout' %}">Logout</a>
+          </li>
+
+          <div class="cancel-btn">
+            <i class="fas fa-times"></i>
+          </div>
+        </ul>
+        <div class="media-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </nav>
+    <script>
+      window.addEventListener("mouseover", initLandbot, { once: true });
+      window.addEventListener("touchstart", initLandbot, { once: true });
+      var myLandbot;
+      function initLandbot() {
+        if (!myLandbot) {
+          var s = document.createElement("script");
+          s.type = "text/javascript";
+          s.async = true;
+          s.addEventListener("load", function () {
+            var myLandbot = new Landbot.Livechat({
+              configUrl:
+                "https://landbot.site/v3/H-1299907-DQKWQDACLZQ59GSZ/index.json",
+            });
+          });
+          s.src = "https://cdn.landbot.io/landbot-3/landbot-3.0.0.js";
+          var x = document.getElementsByTagName("script")[0];
+          x.parentNode.insertBefore(s, x);
+        }
+      }
+    </script>
+    <div class="message">
+      <h2>Welcome,<span id="name"> {{user.company_name}} </span></h2>
+    </div>
+    <div class="profile">
+      <p><b>Company Age :</b> {{user.age}}</p>
+      <p><b>Number of Employees :</b> {{user.emps}}</p>
+      <p><b>Company Domain :</b> {{user.domain}}</p>
+      <p>
+        <b>Description :</b>
+        {{user.descp}}<!--Belvedere Trading is providing timely insights to
+        traders with its advanced proprietary technology.-->
+      </p>
+    </div>
+    <hr />
+
+    <section class="news-letter" id="News-letter">
+      <div class="news">
+        <div class="container">
+          <h1 class="news-heading">
+            Subscribe To Get The Latest <br />
+            News About Us
+          </h1>
+          <p class="des how-de">
+            Get the Latest news about digital Marketing to Your Pocket, drop
+            your <br />
+            email below to get daliy update about us
+          </p>
+
+          <form action="">
+            <!-- <input type="email"  maxlength="50" required placeholder="Enter your email address"> -->
+            <button class="bt">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

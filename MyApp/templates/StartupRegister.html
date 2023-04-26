@@ -1,0 +1,251 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'StartupRegisterStyle.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <script>
+      var msg = "{{data|safe}}";
+      if (msg != "") {
+        alert(msg);
+      }
+    </script>
+    <title>Start-up Register</title>
+  </head>
+
+  <body>
+    <nav>
+      <div class="navbar">
+        <div class="logo">
+          <a href="index.html"
+            >ScaleUP<i class="far fa-arrow-alt-circle-up"></i
+          ></a>
+        </div>
+        <!-- <ul class="menu">
+          <li class="first current_page_item">
+            <a href="{% url 'index' %}">Home</a>
+          </li>
+          <li><a href="{% url 'Login' %}">Login</a></li>
+          <li><a href="{% url 'StartupRegister' %}">Startup Signup</a></li>
+
+          <div class="cancel-btn">
+            <i class="fas fa-times"></i>
+          </div>
+        </ul> -->
+        <div class="media-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </nav>
+    <div class="wrapper">
+      <div class="title-text">
+        <div class="title login">
+          ScaleUP<i class="far fa-arrow-alt-circle-up"></i>
+        </div>
+        <div class="title signup">Signup Form</div>
+      </div>
+      <div class="form-container">
+        <div class="form-inner">
+          <form name="f1" method="post" action={% url 'StartupRegisterAction' %}
+          onsubmit="return validate(this);"> {% csrf_token %}
+
+          <font size="" color="red">
+            <center>{{ data|safe }}</center>
+          </font>
+          <!-- <table align="center" width="40">
+                <tr>
+                    <td>
+                        <font size="" color="black">Company&nbsp;Name&nbsp;</b>
+                    </td>
+                    <td><input type="text" name="t1" style="font-family: Comic Sans MS" size="25" /></td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <font size="" color="black">Company&nbsp;Age&nbsp;</b>
+                    </td>
+                    <td><input type="number" name="t2" style="font-family: Comic Sans MS" size="25" /></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <font size="" color="black">Number&nbsp;of&nbsp;Employees&nbsp;</b>
+                    </td>
+                    <td><input type="number" name="t3" style="font-family: Comic Sans MS" size="30" /></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <font size="" color="black">Company&nbsp;Domain&nbsp;</b>
+                    </td>
+                    <td><input type="text" name="t4" style="font-family: Comic Sans MS" size="15" /></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <font size="" color="black">Description&nbsp;</b>
+                    </td>
+                    <td><input type="text" name="t5" style="font-family: Comic Sans MS" size="60" /></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <font size="" color="black">Point&nbsp;of&nbsp;Contact&nbsp;-&nbsp;Name&nbsp;</b>
+                    </td>
+                    <td><input type="text" name="t10" style="font-family: Comic Sans MS" size="60" /></td>
+                </tr>
+
+                
+
+                <tr>
+                    <td>
+                        <font size="" color="black">Point&nbsp;of&nbsp;Contact&nbsp;-&nbsp;Email&nbsp;</b>
+                    </td>
+                    <td><input type="text" name="t8" style="font-family: Comic Sans MS" size="60" /></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <font size="" color="black">Company&nbsp;Email&nbsp;</b>
+                    </td>
+                    <td><input type="text" name="t9" style="font-family: Comic Sans MS" size="60" /></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <font size="" color="black">Password&nbsp;</b>
+                    </td>
+                    <td><input type="password" name="t7" style="font-family: Comic Sans MS" size="30" /></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <font size="" color="black">LinkedIn&nbsp;Profile&nbsp;</b>
+                    </td>
+                    <td><input type="text" name="t9" style="font-family: Comic Sans MS" size="60" /></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <font size="" color="black">Company&nbsp;Website&nbsp; </b>
+                    </td>
+                    <td><input type="text" name="t9" style="font-family: Comic Sans MS" size="60" /></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Submit">
+                    </td>
+            </table> -->
+          <div class="field">
+            <input type="text" placeholder="Company Name" name="t1" required />
+          </div>
+          <div class="field">
+            <input
+              type="number"
+              placeholder="Company Age (in months) "
+              name="t2"
+              required
+            />
+          </div>
+          <div class="field">
+            <input
+              type="number"
+              placeholder="Number of Employess"
+              name="t3"
+              required
+            />
+          </div>
+          <div class="field">
+            <input type="" placeholder="Description " name="t4" required />
+          </div>
+          <label for="domain"></label>
+          <select name="t5" required>
+            <option value="" disabled selected>Select Company Domain</option>
+            <option value="Finance and Accounting" class="s">
+              Finance and Accounting
+            </option>
+            <option value="Human Resources" class="s">Human Resource</option>
+            <option value="Legal and Compliance" class="s">
+              Legal and Compliance
+            </option>
+            <option value="Sales and Marketing" class="s">
+              Sales and Marketing
+            </option>
+            <option value="Logistics" class="s">Logistics</option>
+            <option value="Engineering" class="s">Engineering</option>
+            <option value="Design" class="s">Design</option>
+            <option value="Operations" class="s">Operations</option>
+            <option value="Management" class="s">Management</option>
+            <option value="Manufacturing and Production" class="s">
+              Manufacturing and Production
+            </option>
+            <option value="Training" class="s">Training</option>
+            <option value="Information Technology" class="s">
+              Information Technology
+            </option>
+          </select>
+          <div class="field">
+            <input
+              type="text"
+              placeholder="Name - Point of Contact"
+              name="t6"
+              required
+            />
+          </div>
+          <div class="field">
+            <input
+              type="email"
+              placeholder="Email - Point of Contact"
+              name="t7"
+              required
+            />
+          </div>
+          <div class="field">
+            <input
+              type="email"
+              placeholder="Company Email"
+              name="t8"
+              required
+            />
+          </div>
+          <div class="field">
+            <input
+              type="text"
+              placeholder="LinkedIn Profile"
+              name="t9"
+              required
+            />
+          </div>
+          <div class="field">
+            <input
+              type="text"
+              placeholder="Company Website"
+              name="t10"
+              required
+            />
+          </div>
+          <div class="field">
+            <input type="password" placeholder="Password" name="t11" required />
+          </div>
+
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit" value="Sign Up" onclick="myFunction()" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

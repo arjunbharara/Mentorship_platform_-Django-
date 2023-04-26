@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static RatingStyle.css %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <title>Rating</title>
+</head>
+
+<body>
+    <nav>
+        <div class="navbar">
+            <div class="logo"><a href="#">ScaleUP<i class="far fa-arrow-alt-circle-up"></i></a></div>
+            <ul class="menu">
+                <li class="first current_page_item"><a href="{% url 'ViewStartupGroup' %}">View Groups</a></li>
+                <li><a href="{% url 'PostQueries' %}">Post Queries</a></li>
+                <li><a href="{% url 'ViewSuggestions' %}">View Suggestions</a></li>
+                <li><a href="{% url 'ViewRatings' %}">View Mentor Ratings</a></li>
+                <li><a href="{% url 'Logout' %}">Logout</a></li>
+
+                <div class="cancel-btn">
+                    <i class="fas fa-times"></i>
+                </div>
+            </ul>
+            <div class="media-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </nav>
+    <br />{% csrf_token %}<br />
+    <h4><b>Rating Screen</b></h4>
+
+
+    <table align="center" width="40">
+        {{data|safe}}
+
+        <tr>
+            <td><b>Choose&nbsp;Rating</b></td>
+            <td><select name="t3">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </td>
+        </tr>
+
+
+
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Submit">
+            </td>
+        </tr>
+
+    </table>
+    </div>
+
+    </div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+
+</body>
+
+</html>
